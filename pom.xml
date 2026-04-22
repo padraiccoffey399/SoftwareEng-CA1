@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>SoftwareEng-CA1</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <groupId>com.christopherbolger</groupId>
 
     <properties>
         <java.version>21</java.version>
@@ -20,6 +21,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.3</version>
+            <scope>main/test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -32,8 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>23</source>
+                    <target>23</target>
                 </configuration>
             </plugin>
         </plugins>
