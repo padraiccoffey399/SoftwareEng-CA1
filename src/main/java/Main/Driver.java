@@ -1,20 +1,44 @@
 package Main;
 
+import Model.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Driver {
-    public static void main(String[] args) {
-        new Driver();
-    }
-    public void Driver(){
-        startMenu();
+
+    private List<User> users;
+
+    public Driver() {
+        users = new ArrayList<>();
     }
 
-    private void startMenu(){
-        System.out.println("""
-                Welcome to SETU Sells!
-                ----------------------
-                Nothing here yet!
-                ----------------------
-                """);
+    public void addUser(User user) {
+        users.add(user);
     }
 
+    // ✅ remove by index (useful for testing)
+    public void removeUser(int index) {
+        if (validIndex(index, users)) {
+            users.remove(index);
+        }
+    }
+
+    public User getUser(int index) {
+        return validIndex(index, users) ? users.get(index) : null;
+    }
+
+    public void replaceUser(int index, User user) {
+        if (validIndex(index, users)) {
+            users.set(index, user);
+        }
+    }
+
+    public int userCount() {
+        return users.size();
+    }
+
+    public static boolean validIndex(int index, List<?> list) {
+        return index >= 0 && index < list.size();
+    }
 }
