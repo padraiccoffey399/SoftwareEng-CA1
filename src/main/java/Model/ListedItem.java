@@ -13,8 +13,10 @@ public class ListedItem {
     private double price;
     private String location;
     private final User seller;
+    private Categories category;
 
-    public ListedItem(String title, String description, LocalDate listDate, double price, String location, User seller) throws Exception {
+    public ListedItem(String title, String description, LocalDate listDate, double price, String location, User seller, Categories category) throws Exception {
+        images = new ArrayList<>();
         if(title != null && title.length() < 50){
             this.title = title;
         }else{
@@ -43,6 +45,11 @@ public class ListedItem {
             this.seller = Objects.requireNonNull(seller);
         }catch(NullPointerException e){
             throw new Exception("Seller must be non null!");
+        }
+        if(category != null){
+            this.category = category;
+        }else{
+            throw new Exception("Category must be non null!");
         }
     }
 
