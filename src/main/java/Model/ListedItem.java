@@ -2,17 +2,19 @@ package Model;
 
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ListedItem {
     private String title;
     private String description;
-    private LocalDate listDate;
-    private Image[] images;
+    private final LocalDate listDate;
+    private ArrayList<Image> images;
     private double price;
     private String location;
+    private final User seller;
 
-    public ListedItem(String title, String description, LocalDate listDate, double price, String location) {
+    public ListedItem(String title, String description, LocalDate listDate, double price, String location, User seller) throws Exception {
         if(title != null && title.length() < 50){
             this.title = title;
         }else{
@@ -37,7 +39,67 @@ public class ListedItem {
             if(location != null)
                 this.location = location.substring(0, 50);
         }
+        try {
+            this.seller = Objects.requireNonNull(seller);
+        }catch(NullPointerException e){
+            throw new Exception("Seller must be non null!");
+        }
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getListDate() {
+        return listDate;
+    }
+
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
+    }
+
+    public void addImage(Image image){
+        if(image != null)
+            this.images.add(image);
+    }
+
+    public Image removeImage(Image image){
+        return this.images.remove(images.indexOf(image));
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public User getSeller() {
+        return seller;
+    }
 }
