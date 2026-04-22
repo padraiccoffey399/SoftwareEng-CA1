@@ -17,7 +17,6 @@ public class Driver {
         users.add(user);
     }
 
-    // ✅ remove by index (useful for testing)
     public void removeUser(int index) {
         if (validIndex(index, users)) {
             users.remove(index);

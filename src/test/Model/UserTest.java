@@ -3,6 +3,7 @@ package Model;
 import Main.Driver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -21,7 +22,7 @@ class UserTest {
         }
 
 
-        @org.junit.jupiter.api.Test
+        @Test
         void addUser() {
             assertNull(driver.getUser(30));
             assertEquals(30, driver.userCount());
@@ -30,7 +31,7 @@ class UserTest {
             assertEquals("Tim", driver.getUser(30).getName());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void removeUser() {
             assertEquals("User 29",driver.getUser(29).getName());
             assertEquals(30,driver.userCount());
@@ -39,37 +40,51 @@ class UserTest {
             assertNull(driver.getUser(29));
         }
 
-
-        @org.junit.jupiter.api.AfterEach
-        void tearDown() {
-        }
-
-        @org.junit.jupiter.api.Test
+        @Test
         void getName() {
+            User user = new User("John", "john@email.com", 25);
+            assertEquals("John", user.getName());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void getEmail() {
+            User user = new User("John", "john@email.com", 25);
+            assertEquals("john@email.com", user.getEmail());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void getAge() {
+            User user = new User("John", "john@email.com", 25);
+            assertEquals(25, user.getAge());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void setName() {
+            User user = new User("John", "john@email.com", 25);
+            user.setName("Alice");
+            assertEquals("Alice", user.getName());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void setEmail() {
+            User user = new User("John", "john@email.com", 25);
+            user.setEmail("alice@email.com");
+            assertEquals("alice@email.com", user.getEmail());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void setAge() {
+            User user = new User("John", "john@email.com", 25);
+            user.setAge(30);
+            assertEquals(30, user.getAge());
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void testToString() {
+            User user = new User("John", "john@email.com", 25);
+
+            String expected = "Name: John, Email: john@email.com, Age: 25";
+            assertEquals(expected, user.toString());
         }
     }
 }
